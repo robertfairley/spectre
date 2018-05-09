@@ -1,13 +1,15 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var cleancss = require('gulp-clean-css');
-var csscomb = require('gulp-csscomb');
-var rename = require('gulp-rename');
-var autoprefixer = require('gulp-autoprefixer');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const cleancss = require('gulp-clean-css');
+const csscomb = require('gulp-csscomb');
+const rename = require('gulp-rename');
+const autoprefixer = require('gulp-autoprefixer');
 
-var paths = {
+const DESTINATION_DIR = process.env.STATIC_PATH || './dist';
+
+const paths = {
   source: './src/*.scss',
-  doc: './docs/src/*.scss'
+//  doc: './docs/src/*.scss'
 };
 
 gulp.task('watch', function() {
@@ -30,6 +32,7 @@ gulp.task('build', function() {
     .pipe(gulp.dest('./dist'));
 });
 
+/*
 gulp.task('docs', function() {
   gulp.src(paths.doc)
     .pipe(sass({outputStyle: 'compact', precision: 10})
@@ -56,5 +59,7 @@ gulp.task('docs', function() {
     }))
     .pipe(gulp.dest('./docs/dist'));
 });
+
+*/
 
 gulp.task('default', ['build']);
